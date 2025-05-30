@@ -21,9 +21,9 @@ public class ReportController {
     private RestTemplate restTemplate;
 
     //Vamos a conseguir los booking y hacemos las cosas por frontend
-    @GetMapping("/report1/")
-    public ResponseEntity<List<Booking>> geReport() {
-        return reportService.getReport();
+    @GetMapping("/")
+    public ResponseEntity<List<Booking>> getReportOfBookings() {
+        return reportService.getReportOfBookings();
     }
 
 

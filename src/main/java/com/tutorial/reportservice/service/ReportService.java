@@ -16,8 +16,10 @@ import java.util.List;
 @Service
 public class ReportService {
 
+    @Autowired
     private RestTemplate restTemplate;
-    public ResponseEntity<List<Booking>> getReport() {
+
+    public ResponseEntity<List<Booking>> getReportOfBookings() {
         ResponseEntity<List<Booking>> bookingsResponse = restTemplate.exchange(
                 "http://bookingVoucherMS/api/v1/booking/",
                 HttpMethod.GET,
