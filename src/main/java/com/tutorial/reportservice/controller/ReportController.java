@@ -1,6 +1,7 @@
 package com.tutorial.reportservice.controller;
 
 import com.tutorial.reportservice.model.Booking;
+import com.tutorial.reportservice.model.Client;
 import com.tutorial.reportservice.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -9,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -26,6 +26,10 @@ public class ReportController {
         return reportService.getReportOfBookings();
     }
 
+    @GetMapping("/clients/")
+    public ResponseEntity<List<Client>> getClientsForReports() {
+        return reportService.getClientsForReports();
+    }
 
 
 }

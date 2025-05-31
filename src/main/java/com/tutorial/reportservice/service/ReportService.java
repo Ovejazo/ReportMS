@@ -3,6 +3,7 @@ package com.tutorial.reportservice.service;
 //import edu.mtisw.payrollbackend.repositories.EmployeeRepository;
 //import edu.mtisw.payrollbackend.repositories.ExtraHoursRepository;
 import com.tutorial.reportservice.model.Booking;
+import com.tutorial.reportservice.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -29,5 +30,17 @@ public class ReportService {
         List<Booking> bookings = bookingsResponse.getBody();
 
         return ResponseEntity.ok(bookings);
+    }
+
+    public ResponseEntity<List<Client>> getClientsForReports() {
+        ResponseEntity<List<Client>> clientsResponse = restTemplate.exchange(
+                "http://clientMS/api/v1/clients/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Client>>() {}
+        );
+        List<Client> clients = clientsResponse.getBody();
+
+        return ResponseEntity.ok(clients);
     }
 }
